@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectForInizio.Dtos;
 using ProjectForInizio.Services;
 
 namespace ProjectForInizio.Controllers
@@ -24,13 +25,20 @@ namespace ProjectForInizio.Controllers
         {
             if (string.IsNullOrWhiteSpace(query))
             {
-                ModelState.AddModelError(string.Empty, "Query is required.");
                 return View("Index");
             }
-            var result = await _service.SearchAsync(query, ct);
-            ViewBag.Query = result.Query;
-            ViewBag.Result = result.Items;
+            try
+            {
+                var result = await _service.SearchAsync(query, ct);
+                ViewBag.Query = result.Query;
+                ViewBag.Items = result.Items;
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.ToString();
+            }
             return View("Index");
+
         }
 
     }

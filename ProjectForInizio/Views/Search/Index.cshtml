@@ -13,6 +13,12 @@
     <button type="submit">Submit</button>
 </form>
 
+@if (ViewBag.Error != null)
+{
+    <pre>@ViewBag.Error</pre>
+}
+
+
 @if (items != null && items.Count > 0)
 {
     <h3>Results for: <strong>@ViewBag.Query</strong></h3>
@@ -29,3 +35,5 @@
         }
     </ul>
 }
+
+
