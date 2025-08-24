@@ -1,15 +1,14 @@
 ﻿@using ProjectForInizio.Dtos
 @{
-    ViewData["Title"] = "Search → Preview";
     var items = ViewBag.Items as List<SearchItemDto>;
 }
 
-<h2>Search → Preview (fake service)</h2>
+<h2>Search → Preview</h2>
 
-<form asp-controller="Search" asp-action="Run" method="post">
+<form method="post" action="/Search/Run">
     @Html.AntiForgeryToken()
     <label for="query">Search:</label>
-    <input id="query" name="query" type="text" placeholder="text..." required />
+    <input id="query" name="query" type="text" required />
     <button type="submit">Submit</button>
 </form>
 
@@ -18,8 +17,7 @@
     <pre>@ViewBag.Error</pre>
 }
 
-
-@if (items != null && items.Count > 0)
+@if (items is { Count: > 0 })
 {
     <h3>Results for: <strong>@ViewBag.Query</strong></h3>
     <ul>
@@ -35,5 +33,7 @@
         }
     </ul>
 }
-
-
+@if (ViewBag.DownloadUrl != null)
+{
+    <p>Saved: <a href="@ViewBag.DownloadUrl">Download JSON</a></p>
+}
