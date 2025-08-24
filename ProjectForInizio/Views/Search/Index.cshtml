@@ -1,0 +1,31 @@
+﻿@using ProjectForInizio.Dtos
+@{
+    ViewData["Title"] = "Search → Preview";
+    var items = ViewBag.Items as List<SearchItemDto>;
+}
+
+<h2>Search → Preview (fake service)</h2>
+
+<form asp-controller="Search" asp-action="Run" method="post">
+    @Html.AntiForgeryToken()
+    <label for="query">Search:</label>
+    <input id="query" name="query" type="text" placeholder="text..." required />
+    <button type="submit">Submit</button>
+</form>
+
+@if (items != null && items.Count > 0)
+{
+    <h3>Results for: <strong>@ViewBag.Query</strong></h3>
+    <ul>
+        @foreach (var it in items)
+        {
+            <li>
+                <a href="@it.Url" target="_blank" rel="noopener">@it.Title</a>
+                @if (!string.IsNullOrWhiteSpace(it.Snippet))
+                {
+                    <span> — @it.Snippet</span>
+                }
+            </li>
+        }
+    </ul>
+}
