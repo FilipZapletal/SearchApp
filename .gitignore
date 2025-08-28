@@ -361,3 +361,29 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# custom ignore rules for specific project types
+*.env
+**/*secrets*/**
+secrets.json
+*.pubxml
+wwwroot/results/*.json
+*.pubxml.user
+*.pfx
+publish/
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Build output
+bin/
+obj/
+out/
+
+# User-specific
+*.user
+*.suo
+*.rsuser
+.vs/
