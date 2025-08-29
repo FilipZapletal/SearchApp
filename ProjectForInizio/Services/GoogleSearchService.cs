@@ -9,12 +9,12 @@ namespace ProjectForInizio.Services;
 /// </summary>
 public class GoogleSearchService : IGoogleSearchService
 {
-    // 🔹 HttpClient injected by ASP.NET Core DI (AddHttpClient)
+    //   HttpClient injected by ASP.NET Core DI (AddHttpClient)
     //   - keeps TCP connections pooled and reused
     //   - avoids socket exhaustion compared to "new HttpClient()"
     private readonly HttpClient _http;
 
-    // 🔹 API key and CX (Search Engine ID) loaded from configuration
+    //   API key and CX (Search Engine ID) loaded from configuration
     //     - local dev: dotnet user-secrets
     //     - prod: Azure App Settings
     private readonly string _apiKey;
