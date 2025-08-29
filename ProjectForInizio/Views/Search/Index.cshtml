@@ -3,9 +3,9 @@
     var items = ViewBag.Items as List<SearchItemDto>;
 }
 
-<h2>Search → Preview</h2>
+<h2 style="text-align:center">Search -> on submi, the app retrieves results from the Google Custom Search API `(first page)`</h2>
 
-<form method="post" action="/Search/Run">
+<form method="post" action="/Search/Run" style="text-align:center">
     @Html.AntiForgeryToken()
     <label for="query">Search:</label>
     <input id="query" name="query" type="text" required />
@@ -19,8 +19,8 @@
 
 @if (items is { Count: > 0 })
 {
-    <h3>Results for: <strong>@ViewBag.Query</strong></h3>
-    <ul>
+    <h3 style="text-align:center">Results for: <strong>@ViewBag.Query</strong></h3>
+    <ul style="text-align:center">
         @foreach (var it in items)
         {
             <li>
@@ -35,5 +35,5 @@
 }
 @if (ViewBag.DownloadUrl != null)
 {
-    <p>Saved: <a href="@ViewBag.DownloadUrl">Download JSON</a></p>
+    <p style="text-align:center">Saved: <a href="@ViewBag.DownloadUrl">Download JSON</a></p>
 }
