@@ -3,7 +3,7 @@
     var items = ViewBag.Items as List<SearchItemDto>;
 }
 
-<h2 style="text-align:center">Search -> on submi, the app retrieves results from the Google Custom Search API `(first page)`</h2>
+<h2 style="text-align:center">Search the Web with Google Custom Search</h2>
 
 <form method="post" action="/Search/Run" style="text-align:center">
     @Html.AntiForgeryToken()
@@ -35,5 +35,5 @@
 }
 @if (ViewBag.DownloadUrl != null)
 {
-    <p style="text-align:center">Saved: <a href="@ViewBag.DownloadUrl">Download JSON</a></p>
+    <p style="text-align:center">Saved: <a href="@ViewBag.DownloadUrl">Download results (json)</a></p>
 }

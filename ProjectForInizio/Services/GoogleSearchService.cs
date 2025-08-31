@@ -15,8 +15,6 @@ public class GoogleSearchService : IGoogleSearchService
     private readonly HttpClient _http;
 
     //   API key and CX (Search Engine ID) loaded from configuration
-    //     - local dev: dotnet user-secrets
-    //     - prod: Azure App Settings
     private readonly string _apiKey;
     private readonly string _cx;
 
